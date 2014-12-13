@@ -1,0 +1,41 @@
+pkgname=gvim-vimjp-git
+pkgbase=vim
+conflicts=('vim' 'vim-runtime' 'gvim')
+pkgver=7.4.546.1.gdab52bb
+pkgrel=1
+arch=('i686' 'x86_64')
+license=('custom:vim')
+url="http://vim-jp.org"
+makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'desktop-file-utils' 'gtk2' 'lua' 'git')
+source=("vim-repo::git+git://github.com/vim-jp/vim.git")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}"/vim-repo/src
+  git describe  --tags | sed -E 's/^v//;s/-/./g'
+}
+
+build() {
+  cd "${srcdir}"/vim-repo/src
+
+  ./configure \
+    --enable-fail-if-missing \
+    --prefix=/usr \
+    --with-features=huge \
+    --enable-gui=gtk2 \
+    --enable-multibyte \
+    --enable-pythoninterp \
+    --disable-python3interp \
+    --enable-rubyinterp \
+    --enable-luainterp
+
+  make
+}
+
+package() {
+  cd "${srcdir}"/vim-repo/src
+  make -j4 DESTDIR="${pkgdir}" install
+  rm "${pkgdir}"/usr/bin/{view,ex}
+}
+
+# vim:set sw=2 sts=2 et:
