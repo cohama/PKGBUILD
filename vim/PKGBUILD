@@ -1,13 +1,13 @@
 pkgname=gvim-vimjp-git
 pkgbase=vim
 conflicts=('vim' 'vim-runtime' 'gvim')
-pkgver=7.4.546.1.gdab52bb
+pkgver=7.4.843
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://vim-jp.org"
 makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'desktop-file-utils' 'gtk2' 'lua' 'git')
-source=("vim-repo::git+git://github.com/vim-jp/vim.git")
+source=("vim-repo::git+git://github.com/vim/vim.git")
 sha1sums=('SKIP')
 
 pkgver() {
