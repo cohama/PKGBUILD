@@ -3,3 +3,4 @@
 *.pkg.tar.xz
 *.src.tar.gz
 *.pkg.tar.xz.sig
+*-repo
