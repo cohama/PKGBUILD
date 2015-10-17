@@ -1,0 +1,14 @@
+pkgname=ttf-meiryo
+pkgver=1.0
+pkgrel=1
+pkgdesc="custom fonts"
+arch=('any')
+depends=('fontconfig' 'xorg-font-utils')
+source=('meiryo.ttc' 'meiryob.ttc')
+install=$pkgname.install
+md5sums=('d516fd68397bced208ef2bdf5f71ed6d'
+         'd516fd68397bced208ef2bdf5f71ed6d')
+package() {
+  install -d "$pkgdir/usr/share/fonts/TTF"
+  install -m644 "$srcdir/"*.ttc "$pkgdir/usr/share/fonts/TTF/"
+}
