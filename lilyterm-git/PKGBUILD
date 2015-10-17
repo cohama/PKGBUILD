@@ -1,0 +1,40 @@
+# Maintainer : koyudoon <koyudoon at gmail dot com>
+
+# Contributors by way of lilyterm package in arch repos
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: TDY <tdy@gmx.com>
+# Contributor: DonVla <donvla@users.sourceforge.net>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+
+pkgname=lilyterm-git
+provides=('lilyterm')
+pkgver=0.9.9.4.r112.gf600c08
+pkgrel=1
+pkgdesc='A light and easy to use libvte based X terminal emulator'
+arch=('i686' 'x86_64')
+url='http://lilyterm.luna.com.tw/index_en.html'
+license=('GPL3')
+depends=('vte')
+conflicts=('lilyterm')
+makedepends=('gettext' 'intltool' 'pkgconfig>=0.16')
+source=("lilyterm-repo::git+https://github.com/Tetralet/LilyTerm")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
+}
+
+build() {
+  cd "$srcdir/${pkgname%-git}"
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc
+  make
+}
+
+package() {
+  cd "$srcdir/${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
+}
+
+# vim: ft=sh
