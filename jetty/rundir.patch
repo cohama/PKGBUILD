@@ -1,0 +1,24 @@
+--- a/jetty.sh	2015-09-04 00:09:38.125980578 +0300
++++ b/jetty.sh	2015-09-04 00:09:38.149313264 +0300
+@@ -261,10 +261,8 @@
+ #####################################################
+ # Find a location for the pid file
+ #####################################################
+-if [ -z "$JETTY_RUN" ] 
+-then
+-  JETTY_RUN=$(findDirectory -w /var/run /usr/var/run $JETTY_BASE /tmp)
+-fi
++mkdir -p "$JETTY_RUN"
++chown -R "$JETTY_USER":"$JETTY_USER" "$JETTY_RUN"
+ 
+ #####################################################
+ # Find a pid and state file
+@@ -276,7 +274,7 @@
+ 
+ if [ -z "$JETTY_STATE" ] 
+ then
+-  JETTY_STATE=$JETTY_BASE/${NAME}.state
++  JETTY_STATE=$JETTY_RUN/${NAME}.state
+ fi
+ 
+ case "`uname`" in
