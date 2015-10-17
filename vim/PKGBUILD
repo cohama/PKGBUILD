@@ -1,7 +1,7 @@
 pkgname=gvim-vimjp-git
 pkgbase=vim
 conflicts=('vim' 'vim-runtime' 'gvim')
-pkgver=7.4.843
+pkgver=7.4.898.1.g60cce2f
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
@@ -38,4 +38,4 @@ package() {
   rm "${pkgdir}"/usr/bin/{view,ex}
 }
 
-# vim:set sw=2 sts=2 et:
+# vim:set sw=2 sts=2 et ft=sh:
