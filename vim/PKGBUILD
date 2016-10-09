@@ -1,7 +1,7 @@
 pkgname=gvim-vimjp-git
 pkgbase=vim
 conflicts=('vim' 'vim-runtime' 'gvim')
-pkgver=7.4.2143
+pkgver=8.0.0023
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
