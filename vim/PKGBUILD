@@ -1,12 +1,12 @@
 pkgname=gvim-vimjp-git
 pkgbase=vim
 conflicts=('vim' 'vim-runtime' 'gvim')
-pkgver=8.0.0023
+pkgver=8.0.1718
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://vim-jp.org"
-makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'desktop-file-utils' 'gtk2' 'lua' 'git')
+makedepends=('gpm' 'python' 'ruby' 'libxt' 'desktop-file-utils' 'gtk2' 'lua' 'git')
 source=("vim-repo::git+git://github.com/vim/vim.git")
 sha1sums=('SKIP')
 
@@ -26,7 +26,6 @@ build() {
     --with-features=huge \
     --enable-gui=gtk2 \
     --enable-multibyte \
-    --enable-pythoninterp \
     --disable-python3interp \
     --enable-rubyinterp \
     --enable-luainterp
