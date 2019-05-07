@@ -1,0 +1,21 @@
+pkgname=nec-multiwriter5750c
+pkgbase=nec-multiwriter5750c
+pkgver=1.0
+pkgrel=1
+arch=('i686' 'x86_64')
+url=""
+makedepends=('cups')
+source=("https://jpn.nec.com/printer/laser/support/os/linux/download/data/xrc-driver/mw5750c/nec-multiwriter-5750c_${pkgver}-2_i386.deb")
+md5sums=('fd4a201a837cf24d739509ff499f99f3')
+
+build() {
+  cd "${srcdir}"
+  tar xvf data.tar.gz
+}
+
+package() {
+  mkdir -p ${pkgdir}/usr
+  cp -r ${srcdir}/usr/{lib,share} ${pkgdir}/usr
+}
+
+# vim:set sw=2 sts=2 et ft=sh:
