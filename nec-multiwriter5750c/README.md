@@ -4,7 +4,12 @@ NEC MultiWriter 5750c ドライバー
 インストール手順
 ---
 
-まず pacman でドライバーをいれる
+まず pacman でいろいろいれる
+```
+sudo pacman -S cups ghostscript gsfonts lib32-libcups a2ps
+```
+
+cups サービス有効化＆起動
 
 ```
 sudo systemctl enable --now org.cups.cupsd.service
