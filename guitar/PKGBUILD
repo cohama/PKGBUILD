@@ -1,0 +1,28 @@
+# Maintainer: liberodark
+
+pkgname=guitar
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Git GUI Client"
+arch=('x86_64')
+url="https://github.com/soramimi/Guitar/"
+license=('GPL')
+depends=('xdg-utils' 'git' 'qt5ct' 'libpng' 'libxcb' 'icu' 'openssl-1.0')
+source_x86_64=("http://files.soramimi.jp/guitar/${pkgver}/Guitar-${pkgver}-ubuntu16-x64.tar.gz")
+source=($pkgname.desktop
+        $pkgname.svg)
+sha512sums=('24cfa7553e3eb911a921a688d12f035989503998e19cd63e237491a4a462ead3add785ab0b0a50a5bdddb308560b89902f6a19b85aed26aff46be99f6754cdbe'
+         'a731360c2dfbcc74017d0952bad6467d22a23e11d886ad12f18efe96e63e89b0aea76ecc10e5c385fc337191ebe468cf3394c5981f368065d6dab5ddb9723571')
+sha512sums_x86_64=('d26e0898f7892ee9db7bc225cab4aaf74dbe25985c4ff8bd80bd3d2d664f798706f0bd69be750cd694df912f07113e5e58839b57d158a7bd99ccebce26394d86')
+
+package() {
+  cd $srcdir
+  tar xvf Guitar-${pkgver}-ubuntu16-x64.tar.gz
+  mkdir -p "$pkgdir/opt/Guitar/"
+  rm -r "Guitar/LinuxDesktop"
+  cp "Guitar/Guitar" "$pkgdir/opt/Guitar/"
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf "../../opt/Guitar/Guitar" "$pkgdir/usr/bin/Guitar"
+  install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -vDm644 $srcdir/$pkgname.svg $pkgdir/opt/Guitar/$pkgname.svg
+}
