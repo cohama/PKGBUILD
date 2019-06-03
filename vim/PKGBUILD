@@ -1,7 +1,7 @@
 pkgname=gvim-vimjp-git
 pkgbase=vim
 conflicts=('vim' 'vim-runtime' 'gvim')
-pkgver=8.1.0039
+pkgver=8.1.1155
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
@@ -22,7 +22,7 @@ build() {
   make distclean || true
 
   # ./configure \
-  CPPFLAGS="-I ${HOME}/.pyenv/versions/3.6.5/include/python3.6m/" ./configure \
+  LDFLAGS="-Wl,-rpath=${HOME}/.pyenv/versions/3.6.6/lib" ./configure \
     --enable-fail-if-missing \
     --prefix=/usr \
     --with-features=huge \
