@@ -1,0 +1,54 @@
+[buildPlans.iosevka-custom]
+family = "Iosevka Custom"
+spacing = "normal"
+serifs = "slab"
+no-cv-ss = true
+
+[buildPlans.iosevka-custom.variants.design]
+capital-q = "crossing"
+d = "tailed-serifed"
+g = "double-storey"
+i = "serifed"
+l = "tailed-serifed"
+v = "straight-motion-serifed"
+y = "straight"
+z = "straight-serifed"
+one = "base-flat-top-serif"
+seven = "straight-serifed"
+asterisk = "penta-low"
+underscore = "above-baseline"
+caret = "medium"
+brace = "curly"
+ampersand = "closed"
+dollar = "open"
+percent = "dots"
+lig-ltgteq = "flat"
+question = "corner"
+
+[buildPlans.iosevka-custom.variants.italic]
+g = "single-storey-serifed"
+k = "symmetric-connected-top-left-serifed"
+x = "straight-motion-serifed"
+y = "cursive"
+
+[buildPlans.iosevka-custom.weights.regular]
+shape = 400
+menu = 400
+css = 400
+
+[buildPlans.iosevka-custom.weights.bold]
+shape = 700
+menu = 700
+css = 700
+
+[buildPlans.iosevka-custom.slopes.upright]
+angle = 0
+shape = "upright"
+menu = "upright"
+css = "normal"
+
+[buildPlans.iosevka-custom.slopes.italic]
+angle = 9.4
+shape = "italic"
+menu = "italic"
+css = "italic"

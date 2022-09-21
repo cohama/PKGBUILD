@@ -1,0 +1,28 @@
+pkgname=ttf-iosevka-custom
+pkgver=10.0.0
+pkgrel=1
+pkgdesc="custom fonts"
+arch=('any')
+depends=('fontconfig' 'xorg-font-utils')
+makedepends=('npm' 'ttfautohint')
+source=(private-build-plans.toml)
+# md5sums=('0006b95834fe5c16865df77f58b9b652')
+md5sums=('SKIP')
+install=$pkgname.install
+
+prepare() {
+  rm -rf "${srcdir}/${pkgname}-repo"
+  git clone --depth 1 "https://github.com/be5invis/Iosevka" -b "v${pkgver}" "${srcdir}/${pkgname}-repo"
+  cp "${srcdir}/private-build-plans.toml" "$srcdir/${pkgname}-repo"
+}
+
+build() {
+  cd "$srcdir/${pkgname}-repo"
+  npm install
+  npm run build -- ttf::iosevka-custom
+}
+
+package() {
+  install -d "$pkgdir/usr/share/fonts/TTF"
+  install -m644 "$srcdir/${pkgname}-repo/dist/iosevka-custom/ttf/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
+}
