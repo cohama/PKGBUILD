@@ -1,13 +1,13 @@
 pkgname=gvim-vimjp-git
 pkgbase=vim
 conflicts=('vim' 'vim-runtime' 'gvim')
-pkgver=8.1.1155
+pkgver=8.2.4583
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://vim-jp.org"
 makedepends=('gpm' 'python' 'libxt' 'desktop-file-utils' 'gtk3' 'lua' 'git')
-source=("vim-repo::git+git://github.com/vim/vim.git")
+source=("vim-repo::git+https://github.com/vim/vim.git")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -22,7 +22,7 @@ build() {
   make distclean || true
 
   # ./configure \
-  LDFLAGS="-Wl,-rpath=${HOME}/.pyenv/versions/3.6.6/lib" ./configure \
+  LDFLAGS="-Wl,-rpath=$(pyenv prefix)/lib" ./configure \
     --enable-fail-if-missing \
     --prefix=/usr \
     --with-features=huge \
